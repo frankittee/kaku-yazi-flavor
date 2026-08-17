@@ -1,0 +1,26 @@
+name: Sync upstream flavors
+
+on:
+  schedule:
+    - cron: "17 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sync flavor files
+        run: ./scripts/sync-upstream.sh
+      - name: Create pull request when changed
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore: sync Kaku flavors"
+          title: "chore: sync Kaku flavors"
+          body: "Updates the packaged Yazi flavors from the Kaku upstream repository."
+          branch: chore/sync-kaku-flavors
+          delete-branch: true
