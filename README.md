@@ -4,17 +4,20 @@ Yazi flavors from [Kaku](https://github.com/tw93/Kaku), packaged for direct inst
 
 ## Install
 
-Install this package with Yazi's package manager:
+Install either flavor with Yazi's package manager:
 
 ```sh
-ya pkg add https://github.com/frankittee/kaku-yazi-flavor
+ya pkg add frankittee/kaku-yazi-flavor:kaku-dark
+# or
+ya pkg add frankittee/kaku-yazi-flavor:kaku-light
 ```
 
 Then select one in `~/.config/yazi/theme.toml`:
 
 ```toml
-flavor = "kaku-dark"
-# or: flavor = "kaku-light"
+[flavor]
+dark = "kaku-dark"
+light = "kaku-light"
 ```
 
 The package contains both `kaku-dark.yazi` and `kaku-light.yazi`.
